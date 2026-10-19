@@ -1,20 +1,3 @@
-#TODO: Este modulo debo repensarlo.
-
-repo_default_branch() {
-    local repo="$1"
-    local branch
-    branch=$(git -C "$repo" symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's|^origin/||')
-    if [[ -z "$branch" ]]; then
-        for candidate in main master; do
-            if git -C "$repo" show-ref --verify --quiet "refs/remotes/origin/$candidate"; then
-                branch="$candidate"
-                break
-            fi
-        done
-    fi
-    echo "$branch"
-}
-
 normalize_repo_slug() {
     local url="$1"
     echo "$url" | sed -E 's#(git@github.com:|https://github.com/)([^/]+/[^/.]+)(\.git)?#\2#'
@@ -35,8 +18,7 @@ is_system_repo() {
 }
 
 ensure_repo() {
-    # 7. GESTIÓN INTELIGENTE DEL REPO
-    echo_msg "GESTIONANDO REPO DE DOTFILES..."
+    echo_msg "Managing dotfiles repo..."
     local tmp_repo="/tmp/neBSPWN-dotfiles"
     local setup_root="${SETUP_ROOT:-}"
 
@@ -46,7 +28,6 @@ ensure_repo() {
         setup_root=$(cd "$module_dir/../.." && pwd)
     fi
 
-    # 1) Si el repo está en la carpeta actual o donde vive el setup, usarlo y actualizar si hace falta
     local candidates=()
     candidates+=("$(pwd)")
     [[ -n "$setup_root" ]] && candidates+=("$setup_root")
@@ -56,33 +37,30 @@ ensure_repo() {
             local repo_root
             repo_root=$(git -C "$candidate" rev-parse --show-toplevel)
             if is_system_repo "$repo_root"; then
-                echo -e "\n✨ DETECTADO: Repo local: $repo_root"
-                echo_skip "Usando repo local sin actualizar."
+                echo_ok "Local repo detected: $repo_root"
                 export NE_TMP_REPO="$repo_root"
-                echo_ok "Ruta de trabajo establecida en: $NE_TMP_REPO"
                 return 0
             fi
         fi
     done
 
-    # 2) Si no está en la carpeta actual, usar /tmp
     if [[ -d "$tmp_repo/.git" ]]; then
         if ! is_system_repo "$tmp_repo"; then
-            echo_skip "Repo temporal no coincide; re-clonando..."
+            echo_skip "Temp repo mismatch; re-cloning..."
             rm -rf "$tmp_repo"
         fi
     elif [[ -d "$tmp_repo" ]]; then
-        echo_skip "Directorio temporal existe pero no es un repo; limpiando..."
+        echo_skip "Temp directory exists but is not a repo; cleaning..."
         rm -rf "$tmp_repo"
     fi
 
     if [[ -d "$tmp_repo/.git" ]]; then
-        echo_skip "Repo temporal ya clonado; se omite actualización."
+        echo_skip "Temp repo already cloned; skipping update."
     else
-        echo_msg "Clonando repo en temporal..."
+        echo_msg "Cloning repo to temp..."
         git clone "$DOTFILES_REPO" "$tmp_repo"
     fi
 
     export NE_TMP_REPO="$tmp_repo"
-    echo_ok "Ruta de trabajo establecida en: $NE_TMP_REPO"
+    echo_ok "Working path: $NE_TMP_REPO"
 }

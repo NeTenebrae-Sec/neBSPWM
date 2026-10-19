@@ -1,4 +1,4 @@
-PKGS_PACMAN_Essencials=(
+PKGS_PACMAN_ESSENTIALS=(
     "git" "base-devel" "wget" "curl" "unzip" "lsd" "sddm" "fastfetch" "neovim"
     "feh" "xorg" "xorg-xinit" "nemo" "flameshot" "zsh" "tmux" "htop" "bat" "blueman" "unclutter"
     "zsh-syntax-highlighting" "zsh-autosuggestions" "python" "python-pip"
@@ -14,11 +14,11 @@ PKGS_PACMAN_Essencials=(
     "tree-sitter-cli" "ripgrep" "fd" "xdotool" "yad" "xcolor" "qt6-virtualkeyboard" "qt6-svg"
 )
 
-PKGS_PACMAN_optionals=("signal-desktop" "gimp" "obs-studio")
+PKGS_PACMAN_OPTIONALS=("signal-desktop" "gimp" "obs-studio")
 
 PKGS_AUR=(
     "betterlockscreen" "catppuccin-cursors-mocha" "papirus-icon-theme" "catppuccin-gtk-theme-mocha" "kvantum-theme-catppuccin-git"
     "vscodium-bin" "nomacs" "xidlehook"
 )
 
-PKGS_AUR_Optionals=("megasync")
+PKGS_AUR_OPTIONALS=("megasync")

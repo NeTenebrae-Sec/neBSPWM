@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # =============================================================================
-# Autor: NeTenebrae | @NeTenebraes
-# Descripción: neBSPWN System Setup
+# neBSPWN System Setup
 # =============================================================================
 
 set -e
@@ -16,19 +15,17 @@ source "$SETUP_DIR/lib/helpers.sh"
 source "$SETUP_DIR/config/themes.sh"
 source "$SETUP_DIR/config/packages.sh"
 
-source "$SETUP_DIR/modules/10-prereq.sh"
-source "$SETUP_DIR/modules/30-packages.sh"
-source "$SETUP_DIR/modules/40-repo.sh"
-source "$SETUP_DIR/modules/50-defaults.sh"
-
-source "$SETUP_DIR/modules/70-themes.sh"
-source "$SETUP_DIR/modules/80-zsh.sh"
-source "$SETUP_DIR/modules/85-qt.sh"
-source "$SETUP_DIR/modules/90-sddm.sh"
-source "$SETUP_DIR/modules/96-fonts.sh"
+source "$SETUP_DIR/modules/packages.sh"
+source "$SETUP_DIR/modules/repo.sh"
+source "$SETUP_DIR/modules/defaults.sh"
+source "$SETUP_DIR/modules/themes.sh"
+source "$SETUP_DIR/modules/zsh.sh"
+source "$SETUP_DIR/modules/qt.sh"
+source "$SETUP_DIR/modules/sddm.sh"
+source "$SETUP_DIR/modules/fonts.sh"
 
 main() {
-    [ "$EUID" -eq 0 ] && { echo "❌ No root"; exit 1; }
+    [ "$EUID" -eq 0 ] && { echo "[ERR] Do not run as root"; exit 1; }
 
     echo_msg "neBSPWN System Setup $(date +'%H:%M')"
 
@@ -47,7 +44,7 @@ main() {
     setup_fonts_locale
     cleanup_temp_repo
 
-    echo_ok "¡LISTO! Reinicia: systemctl reboot"
+    echo_ok "DONE! Reboot: systemctl reboot"
 }
 
 main "$@"

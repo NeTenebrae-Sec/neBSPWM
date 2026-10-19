@@ -20,28 +20,9 @@ setup_dconf_themes() {
     dconf_write_if_needed "/org/gnome/desktop/interface/color-scheme" "'prefer-dark'"
 }
 
-setup_sddm_cursor() {
-    local cursor_index="[Icon Theme]
-Inherits=$THEME_CURSOR_CLEAN"
-
-    sudo mkdir -p /etc/sddm.conf.d
-    sudo tee /etc/sddm.conf.d/10-cursor.conf >/dev/null << EOF
-[Theme]
-CursorTheme=$THEME_CURSOR_CLEAN
-CursorSize=$CURSOR_SIZE_CLEAN
-EOF
-
-    sudo mkdir -p /usr/share/icons/default
-    echo "$cursor_index" | sudo tee /usr/share/icons/default/index.theme >/dev/null
-
-    sudo mkdir -p /var/lib/sddm/.icons/default
-    echo "$cursor_index" | sudo tee /var/lib/sddm/.icons/default/index.theme >/dev/null
-    sudo chown -R sddm:sddm /var/lib/sddm/.icons
-}
-
 setup_papirus_folders() {
     if command -v papirus-folders >/dev/null 2>&1; then
-        echo_skip "Papirus folders ya instalado"
+        echo_skip "Papirus-folders already installed"
     else
         wget -qO- https://git.io/papirus-folders-install | sh
     fi
@@ -60,13 +41,12 @@ EOF
 }
 
 setup_themes() {
-    echo_msg "🎨 Temas del sistema..."
+    echo_msg "System themes..."
 
     setup_dconf_themes
-    setup_sddm_cursor
     setup_papirus_folders
     setup_root_gtk_theme
     xdg-user-dirs-update
 
-    echo_ok "🎨 Configuración de temas del sistema OK"
+    echo_ok "System themes configured"
 }

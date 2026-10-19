@@ -6,6 +6,5 @@ THEME_ICONS="Papirus-Dark"
 THEME_FONT="JetBrainsMono Nerd Font 11"
 CURSOR_SIZE="16"
 
-# Limpieza de variables para evitar conflictos de comillas
 THEME_CURSOR_CLEAN="${THEME_CURSOR//\'/}"
 CURSOR_SIZE_CLEAN="${CURSOR_SIZE//\'/}"

@@ -8,7 +8,7 @@ detect_system_lang() {
 }
 
 configure_fontconfig_preference() {
-    echo_msg "Configurando preferencia de fuentes"
+    echo_msg "Configuring font preferences"
     sudo mkdir -p /etc/fonts/conf.d
     sudo tee /etc/fonts/conf.d/50-nebspwm-fonts.conf >/dev/null << 'EOF'
 <?xml version="1.0"?>
@@ -41,17 +41,17 @@ refresh_font_cache() {
 }
 
 setup_fonts_locale() {
-    echo_msg "🅰️  Configurando FUENTES + LOCALE..."
+    echo_msg "Configuring fonts + locale..."
 
     local system_lang
     system_lang=$(detect_system_lang)
     if [[ -n "$system_lang" ]]; then
-        echo_ok "Idioma del sistema: $system_lang"
+        echo_ok "System language: $system_lang"
     else
-        echo_skip "No se detectó LANG del sistema; se omite configuración de locale"
+        echo_skip "No system LANG detected; skipping locale config"
     fi
     configure_fontconfig_preference
     refresh_font_cache
 
-    echo_ok "🅰️  Fuentes + Locale COMPLETO (Global Mode)"
+    echo_ok "Fonts + locale done"
 }
