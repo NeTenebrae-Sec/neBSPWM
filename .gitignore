@@ -2,3 +2,5 @@
 .trash
 dotfiles/.config/nomacs/Image Lounge.conf
 configuracion-del-sistema/setup/ori_se.sh
+# router de agente (no pertenece a este repo)
+/AGENTS.md
