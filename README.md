@@ -23,7 +23,7 @@
 
 El resultado es un entorno minimalista basado en **bspwm**, con **Rofi**, **Polybar**, **Conky**, **Kitty** y una paleta visual **Catppuccin Mocha**, pensado para mantenerse fluido incluso con múltiples herramientas de seguridad abiertas.
 
-![Desktop](https://github.com/NeTenebraes/neBSPWM-dotfiles/blob/main/screeshots/Animated.webp)
+![Desktop](https://github.com/NeTenebrae-Sec/neBSPWM/blob/main/screeshots/Animated.webp)
 > En resumen: **Una configuración que puedes reinstalar rápido, que se siente ágil en hardware antiguo, y que mantiene el mismo “flow” para programar, investigar y crear contenido.**
 
 ## Características
@@ -51,10 +51,10 @@ El resultado es un entorno minimalista basado en **bspwm**, con **Rofi**, **Poly
 
 | Componente | Vista |
 |------------|-------|
-| Escritorio | ![Main1](https://github.com/NeTenebraes/neBSPWM-dotfiles/blob/main/screeshots/Main1.png) |
-| Escritorio | ![Main2](https://github.com/NeTenebraes/neBSPWM-dotfiles/blob/main/screeshots/Main2.png) |
-| Rofi | ![Rofi](https://github.com/NeTenebraes/neBSPWM-dotfiles/blob/main/screeshots/Rofi.png) |
-| Login Screen | ![SDDM](https://github.com/NeTenebraes/neBSPWM-dotfiles/blob/main/screeshots/SDDM.png) |
+| Escritorio | ![Main1](https://github.com/NeTenebrae-Sec/neBSPWM/blob/main/screeshots/Main1.png) |
+| Escritorio | ![Main2](https://github.com/NeTenebrae-Sec/neBSPWM/blob/main/screeshots/Main2.png) |
+| Rofi | ![Rofi](https://github.com/NeTenebrae-Sec/neBSPWM/blob/main/screeshots/Rofi.png) |
+| Login Screen | ![SDDM](https://github.com/NeTenebrae-Sec/neBSPWM/blob/main/screeshots/SDDM.png) |
 
 ---
 
@@ -76,8 +76,8 @@ El resultado es un entorno minimalista basado en **bspwm**, con **Rofi**, **Poly
 > **Aviso importante:**  
 > Antes de ejecutar **cualquier script** en tu sistema, **siempre revisa su contenido**. Nunca ejecutes comandos sin verificar su origen.  
 ```
-git clone --depth 1 https://github.com/NeTenebraes/neBSPWM-dotfiles.git
-cd neBSPWM-dotfiles
+git clone --depth 1 https://github.com/NeTenebrae-Sec/neBSPWM.git
+cd neBSPWM
 bash ./setup.sh
 ```
 **Reiniciar:** `systemctl reboot`
@@ -95,7 +95,7 @@ Para mantener la documentación organizada y facilitar el reporte de fallos, he 
 | [**Historial de Cambios**](docs/CHANGELOG.md) | Bugs visuales, problemas de resolución y hardware específico. | 
 | [**Trabajos Actuales (WIP)**](docs/ROADMAP.md) | Próximas funcionalidades, optimizaciones y tareas pendientes. | 
 | [**Guía de Atajos**](docs/HOTKEYS.md) | Listado completo de keybindings para bspwm y sxhkd. | 
-|  [**🐛 Errores Conocidos**](docs/KNOWN_ISSUES.md) | Registro detallado de versiones y actualizaciones del script. | 
+|  [**Errores Conocidos**](docs/KNOWN_ISSUES.md) | Registro detallado de versiones y actualizaciones del script. | 
 
 ---
 
@@ -103,7 +103,7 @@ Para mantener la documentación organizada y facilitar el reporte de fallos, he 
 
 Instala las herramientas que utilizo para ciberseguridad así como también automatiza la configuracion del firewall, DNS y enjaulado de aplicaciones con firejail.
 
-Este script fue Movido al repositorio: [neCybersecurity-Script](https://github.com/NeTenebraes/neCybersecurity-Script)
+Este script fue Movido al repositorio: [neCybersecurity-Script](https://github.com/NeTenebrae-Sec/neCybersecurity-Script)
 
 ---
 
